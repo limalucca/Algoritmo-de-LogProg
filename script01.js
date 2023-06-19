@@ -44,7 +44,7 @@ function calcularParcelas(ValorProduto, numParcelas, JurosPerc){
         var confimaCompra = prompt('Deseja confirmar sua compra? (sim/nao): ');
         if(confimaCompra.toLowerCase() !== 'sim'){
             console.log('COMPRA CANCELADA!!');
-            break; 
+            
         }
         
 
