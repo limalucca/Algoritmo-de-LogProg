@@ -1,11 +1,11 @@
-#README
-##Descrição
+# README
+## Descrição
 Este é um projeto simples em JavaScript que calcula o valor total de compras e fornece detalhes sobre a forma de pagamento. O programa solicita o valor de cada produto comprado, permite adicionar várias compras, e em seguida, calcula o total das compras. Em seguida, solicita a forma de pagamento e fornece informações adicionais com base na opção selecionada.
 
-##Pré-requisitos
+## Pré-requisitos
 Node.js instalado (https://nodejs.org)
 
-##Como executar o projeto
+## Como executar o projeto
 Faça o clone do repositório para o seu ambiente local:
 ```
 git clone https://github.com/limalucca/Algoritmo-de-LogProg.git
@@ -22,7 +22,7 @@ node script.js
 ```
 Siga as instruções apresentadas no console para interagir com o programa.
 
-##Funcionamento do programa
+## Funcionamento do programa
 Ao ser executado, o programa solicitará o valor de cada produto comprado. Insira o valor e pressione Enter.
 
 Após cada compra, será perguntado se deseja fazer outra compra. Responda com 's' para continuar adicionando compras ou com 'n' para encerrar.
