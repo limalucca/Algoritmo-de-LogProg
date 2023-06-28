@@ -1,26 +1,64 @@
-const prompt = require('prompt-sync')({sigint:true})
+const prompt = require('prompt-sync')({ sigint: true });
 
-function calcularParcelas(ValorProduto, numParcelas, JurosPerc){
-    var valorPacela = ValorProduto / numParcelas;
-    valorComJuros = valorPacela + (valorPacela * JurosPerc / 100);
+var JurosPerc = 10;
+var continuar = true;
+var compras = [];
 
-    return valorComJuros.toFixed(2);
+while (continuar) {
+  ValorProduto = parseFloat(prompt('Digite qual o valor do produto: '));
+
+  var resposta = prompt('Deseja fazer outra compra? (s/n): ');
+  if (resposta.toLowerCase() !== 's') {
+    continuar = false;
+  }
+
+  compras.push(ValorProduto);
 }
 
-    ValorProduto = parseFloat(prompt('Digite qual o valor do produto: '));
-    FormaPagamento = prompt(('Digite qual será a forma de pagamento: '));
+var total = 0;
 
+for (var i = 0; i < compras.length; i++) {
+  var valorCompra = compras[i];
+  total += valorCompra;
+}
 
-    if(FormaPagamento.toLowerCase() === "pix") {
-        var desconto = ValorProduto * 0.15;
-        var valorFinal = ValorProduto - desconto;
-    console.log('O valor final da compra é: R$ ', valorFinal.toFixed(2));
-    } else if (FormaPagamento.toLowerCase() === "credito"){
-        var numParcelas = parseFloat(prompt('Digite o numero de parcelas desejado: '));
-        var JurosPerc = parseFloat(prompt('Digite o percentual de juros por parcela: '));
-        var valorParcelaComJuros = calcularParcelas(ValorProduto, numParcelas, JurosPerc);
-        console.log('Valor de cada parcela com juros: R$' + valorParcelaComJuros)
-    }else {
-        var valorFinal = ValorProduto;
-    console.log('O valor final da compra é: R$', valorFinal);
+console.log('\nRESUMO DAS COMPRAS:');
+console.log('Total geral das compras: R$ ' + total.toFixed(2) + '\n');
+
+// FORMA DE PAGAMENTOS  
+var FormaPagamento = prompt('Digite qual será a forma de pagamento (1 para PIX ou 2 para CREDITO): ');
+var detalhesCompra = '';
+
+if (FormaPagamento === "1") {
+  var desconto = total * 0.15;
+  var valorFinal = total - desconto;
+  detalhesCompra += '\nForma de pagamento: Pix\n';
+  detalhesCompra += 'Desconto: - R$ ' + desconto.toFixed(2) + '\n';
+  detalhesCompra += 'Valor final da compra: R$ ' + valorFinal.toFixed(2) + '\n';
+} else if (FormaPagamento === "2") {
+  var numParcelas = parseFloat(prompt('Digite o número de parcelas desejado: '));
+  var valorParcelaComJuros = calcularParcelas(total, numParcelas, JurosPerc);
+  detalhesCompra += '\nForma de pagamento: Crédito\n';
+  detalhesCompra += 'Número de parcelas: ' + numParcelas + '\n';
+  detalhesCompra += 'Juros Percentual: ' + JurosPerc + '%' + '\n';
+  detalhesCompra += 'Valor da parcela com juros: ' + valorParcelaComJuros+ '\n';
+} else {
+  var valorFinal = total;
+  detalhesCompra += '\nForma de pagamento: Outros\n';
+  detalhesCompra += 'Valor Final da compra: R$ ' + valorFinal.toFixed(2)+ '\n';
+}
+
+var confirmaCompra = prompt('Deseja confirmar sua compra? (s/n): ');
+if (confirmaCompra.toLowerCase() !== 's') {
+  console.log('COMPRA CANCELADA!!');
+}
+
+console.log('\nDETALHES DA COMPRA:\n', detalhesCompra);
+
+// FUNÇÃO DE CALCULO PARCELAS
+function calcularParcelas(ValorProduto, numParcelas, JurosPerc) {
+  var valorParcela = ValorProduto / numParcelas;
+  var valorComJuros = valorParcela + (valorParcela * JurosPerc / 100);
+
+  return valorComJuros.toFixed(2);
 }
