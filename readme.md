@@ -1,61 +1,40 @@
-# strip-ansi [![Build Status](https://travis-ci.org/chalk/strip-ansi.svg?branch=master)](https://travis-ci.org/chalk/strip-ansi)
+#README
+##Descrição
+Este é um projeto simples em JavaScript que calcula o valor total de compras e fornece detalhes sobre a forma de pagamento. O programa solicita o valor de cada produto comprado, permite adicionar várias compras, e em seguida, calcula o total das compras. Em seguida, solicita a forma de pagamento e fornece informações adicionais com base na opção selecionada.
 
-> Strip [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) from a string
+##Pré-requisitos
+Node.js instalado (https://nodejs.org)
 
----
-
-<div align="center">
-	<b>
-		<a href="https://tidelift.com/subscription/pkg/npm-strip-ansi?utm_source=npm-strip-ansi&utm_medium=referral&utm_campaign=readme">Get professional support for 'strip-ansi' with a Tidelift subscription</a>
-	</b>
-	<br>
-	<sub>
-		Tidelift helps make open source sustainable for maintainers while giving companies<br>assurances about security, maintenance, and licensing for their dependencies.
-	</sub>
-</div>
-
----
-
-## Install
-
+##Como executar o projeto
+Faça o clone do repositório para o seu ambiente local:
 ```
-$ npm install strip-ansi
+git clone https://github.com/limalucca/Algoritmo-de-LogProg.git
 ```
 
-
-## Usage
-
-```js
-const stripAnsi = require('strip-ansi');
-
-stripAnsi('\u001B[4mUnicorn\u001B[0m');
-//=> 'Unicorn'
-
-stripAnsi('\u001B]8;;https://github.com\u0007Click\u001B]8;;\u0007');
-//=> 'Click'
+Instale as dependências do projeto:
+```
+npm install
 ```
 
+Execute o projeto:
+```
+node script.js
+```
+Siga as instruções apresentadas no console para interagir com o programa.
 
-## Security
+##Funcionamento do programa
+Ao ser executado, o programa solicitará o valor de cada produto comprado. Insira o valor e pressione Enter.
 
-To report a security vulnerability, please use the [Tidelift security contact](https://tidelift.com/security). Tidelift will coordinate the fix and disclosure.
+Após cada compra, será perguntado se deseja fazer outra compra. Responda com 's' para continuar adicionando compras ou com 'n' para encerrar.
 
+Após inserir todas as compras, o programa calculará o total das compras.
 
-## Related
+Em seguida, será solicitada a forma de pagamento. Digite '1' para PIX ou '2' para pagamento com cartão de crédito.
 
-- [strip-ansi-cli](https://github.com/chalk/strip-ansi-cli) - CLI for this module
-- [strip-ansi-stream](https://github.com/chalk/strip-ansi-stream) - Streaming version of this module
-- [has-ansi](https://github.com/chalk/has-ansi) - Check if a string has ANSI escape codes
-- [ansi-regex](https://github.com/chalk/ansi-regex) - Regular expression for matching ANSI escape codes
-- [chalk](https://github.com/chalk/chalk) - Terminal string styling done right
+Dependendo da forma de pagamento selecionada, o programa fornecerá informações adicionais:
 
+Para PIX: Será aplicado um desconto de 15% no valor total das compras, e o programa exibirá o valor final com o desconto aplicado.
+Para pagamento com cartão de crédito: Será solicitado o número de parcelas desejado. O programa calculará o valor de cada parcela com base no número de parcelas e no juros de 10% (valor fixo). Em seguida, exibirá o valor de cada parcela com juros.
+Por fim, o programa perguntará se deseja confirmar a compra. Responda com 's' para confirmar ou com 'n' para cancelar.
 
-## Maintainers
-
-- [Sindre Sorhus](https://github.com/sindresorhus)
-- [Josh Junon](https://github.com/qix-)
-
-
-## License
-
-MIT
+Após a confirmação da compra, o programa exibirá os detalhes da compra, incluindo a forma de pagamento selecionada, desconto (caso seja PIX), número de parcelas (caso seja cartão de crédito), valor das parcelas com juros (caso seja cartão de crédito) e o valor final da compra.
